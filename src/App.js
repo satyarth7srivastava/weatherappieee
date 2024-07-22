@@ -9,7 +9,6 @@ function App() {
   const getData = async () => {
     setPage(2);
     try {
-      console.log(process.env.REACT_APP_API_KEY);
       console.log(city.split(' ').join('_'));
       const resLoc = await axios.get(`http://api.openweathermap.org/geo/1.0/direct?q=${city.split(' ').join('_')},IN&limit=5&appid=${process.env.REACT_APP_API_KEY}`);      
       const res = await axios.get(`https://api.openweathermap.org/data/2.5/weather?lat=${resLoc.data[0].lat}&lon=${resLoc.data[0].lon}&appid=${process.env.REACT_APP_API_KEY}`);     
