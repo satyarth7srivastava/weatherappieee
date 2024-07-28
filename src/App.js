@@ -41,6 +41,11 @@ function App() {
       <div className='container'>
         <div className="sub--container">
           <div className="image">
+            <img
+              src={`http://openweathermap.org/img/w/${weather.weather[0].icon}.png`}
+              alt="weather icon"
+            />
+            <br />
             {weather.weather[0].main}
           </div>
           <div className="temp">
@@ -48,10 +53,22 @@ function App() {
           </div>
           <div className="extra">
             <div className="line">
+              {weather.name}, {weather.sys.country}
+            </div>
+            <div className="line">
+              {weather.weather[0].description}
+            </div>
+            <div className="line">
+              Feels Like: {Math.round(weather.main.feels_like-273)}°C
+            </div>
+            <div className="line">
               WindSpeed: {weather.wind.speed} km/h {weather.wind.deg}°N
             </div>
             <div className="line">
               Humidity: {weather.main.humidity}%
+            </div>
+            <div className="line">
+              Rain: {weather.rain ? weather.rain['1h'] : 0}mm
             </div>
             <div className="line">
               Pressure: {weather.main.pressure}hPa
